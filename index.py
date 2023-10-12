@@ -49,14 +49,19 @@ def findcatus(user_id, category, connect):
 def catg(connect):
     cursor = connect.cursor()
     return cursor.execute('SELECT id, name FROM "categories"').fetchall()
+def catser(connect):
+    cursor = connect.cursor()
+    return cursor.execute('SELECT COUNT(*) FROM "categories"').fetchall()
 cat = ["business", "entertainment", "general", "health", "science", "sports", "technology"]
 
 def delete(connect):
     cursor = connect.cursor()
     return cursor.execute('DELETE FROM "categories" ').fetchall()
 def dob(connect):
-    for i in range(len(cat)):
-        addcategory(cat[i], connect)
-        connect.commit()
-
+    if(len(catser(connect)) < 1):
+        for i in range(len(cat)):
+            addcategory(cat[i], connect)
+            connect.commit()
+    else:
+        return 'категории добавлены'
 # connect.commit()

@@ -33,6 +33,7 @@ def send_welcome(message):
 	itemNews = types.KeyboardButton('Новости')
 	itemSub = types.KeyboardButton('Подписки')
 	itemCate = types.KeyboardButton('Категории')
+	dob(connect)
 	markup.add(itemCate, itemNews, itemSub)
 	connect.commit()
 
