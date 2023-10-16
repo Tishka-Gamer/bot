@@ -51,17 +51,18 @@ def catg(connect):
     return cursor.execute('SELECT id, name FROM "categories"').fetchall()
 def catser(connect):
     cursor = connect.cursor()
-    return cursor.execute('SELECT COUNT(*) FROM "categories"').fetchall()
+    res = cursor.execute('SELECT COUNT(*) FROM "categories"').fetchone()
+    return len(res)
 cat = ["business", "entertainment", "general", "health", "science", "sports", "technology"]
 
 def delete(connect):
     cursor = connect.cursor()
     return cursor.execute('DELETE FROM "categories" ').fetchall()
 def dob(connect):
-    if(len(catser(connect)) < 1):
+    print(catser(connect))
+    if(catser(connect) == 1):
         for i in range(len(cat)):
             addcategory(cat[i], connect)
             connect.commit()
     else:
         return 'категории добавлены'
-# connect.commit()
