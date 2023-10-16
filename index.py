@@ -58,6 +58,7 @@ cat = ["business", "entertainment", "general", "health", "science", "sports", "t
 def delete(connect):
     cursor = connect.cursor()
     return cursor.execute('DELETE FROM "categories" ').fetchall()
+# ghhjk
 def dob(connect):
     print(catser(connect))
     if(catser(connect) == 1):
@@ -66,3 +67,4 @@ def dob(connect):
             connect.commit()
     else:
         return 'категории добавлены'
+
